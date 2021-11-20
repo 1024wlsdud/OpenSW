@@ -78,7 +78,7 @@ while getopts "a:bc" opt; do
 위에 보이는 case안의 a), b) c)는 각각 옵션을 뜻하고 a는 argument를 요구한다는 의미이다.
 입맛대로 옵션 설정을 할 수 있기 때문에 코드를 더욱 간편하게 만들 수 있다.
 
-getopts 명령은 error  repotting과 관련해, 구 개의 모드를 제공한다.
+getopts 명령은 error  repotting과 관련해, 두 개의 모드를 제공한다.
  |Verbose Mode| | 
  |:---|:---:|
  |invalid 옵션 사용|opt 값을 `?`문자로 설정하고 OPTARG같은 unset 오류 메시지를 출력.|
