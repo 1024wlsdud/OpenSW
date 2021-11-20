@@ -93,7 +93,7 @@ getopts 명령은 error  repotting과 관련해, 두 개의 모드를 제공한�
 default값은 verbose모드, 기본적으로 옵션과 관련된 오류 메시지가 표시되므로 스크립트를 배포할 때는 silent mode를 이용한다.
 silent mode는 옵션 스트링의 맨 앞부분에 ‘:’ 문자를 추가
 
-$set -a aaa –posix –ling 123 -…
+`$set -a aaa –posix –ling 123 -…`
 short옵션은 a -abcd 이런 명령이 있다면, 붙여쓰기한 옵션 명으로 인식함
 또한 –long 옵션과 같이 인수를 사용하게 되면, 그 이후의 옵션은 getopts에 의해 인식이 되지 않음
 따라서 long옵션을 따로 처리하고 나머지를 처리해주는 과정이 필요함
@@ -101,9 +101,14 @@ short옵션은 a -abcd 이런 명령이 있다면, 붙여쓰기한 옵션 명으
 
 getopt는 /usr/bin/getopt에 위치한 외부 명령 (getopts 명령은 쉘 내장 명령)
 기본적으로 shor, long 옵션을 모두 지원함, 옵션 인수를 가질 경우 : 문자를 사용하는 것은 getopts 명령과 동일함
-short 옵션 지정: getopt -o a:bc 
-long 옵션 지정 getopt -l help,path:  (,로 옵션명을 구분) 
-차이점  설정하지 않은 옵션이 사용되거나 옵션 인수가 빠질 경우 오류 메시지를 출력해줌 
+|옵션 지정||
+|:---:|:---:|
+|short 옵션 지정|`getopt -o a:bc` |
+|long 옵션 지정|`getopt -l help,path:`|
+
+long 옵션은 `,` 로 구분한다.
+
+**설정하지 않은 옵션**이 사용되거나 **옵션 인수가 빠질 경우** 오류 메시지를 출력해줌 
 ```shell
 #!/bin/bash
 
