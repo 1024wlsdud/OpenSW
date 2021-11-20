@@ -84,6 +84,11 @@ getopts 명령은 error  repotting과 관련해, 두 개의 모드를 제공한�
  |invalid 옵션 사용|opt 값을 `?`문자로 설정하고 OPTARG같은 unset 오류 메시지를 출력.|
  |옵션인수 값을 제공하지 않음|opt값을 `?` 문자로 설정하고 OPTARG같은 unset. 오류 메시지를 출력.|
  
+ |Silent Mode| | 
+ |:---|:---:|
+ |invalid 옵션 사용|opt 값을 `?`문자로 설정하고 OPTARG같은 unset 오류 메시지를 출력.|
+ |옵션인수 값을 제공하지 않음|opt값을 **`:`** 문자로 설정하고 OPTARG같은 unset. 오류 메시지를 출력.|
+ 
  
 default값은 verbose모드, 기본적으로 옵션과 관련된 오류 메시지가 표시되므로 스크립트를 배포할 때는 silent mode를 이용한다.
 silent mode는 옵션 스트링의 맨 앞부분에 ‘:’ 문자를 추가
