@@ -3,14 +3,20 @@
 ### getopt & getopts
 
 getop와 getopts는 어디에 사용될까? -> 사용자나 개발자가 편의를 위해 옵션을 생성하거나 추가할 때 사용
+**getopts**명령을 이용하지 않고 옵션을 해석해 처리하면, 옵션 처리에 스크립트가 많이 복잡해질 수 있음
 
 ![쉘 옵션](https://user-images.githubusercontent.com/43934522/142739531-d9073ba1-0317-4e5b-8029-b5ac481fcbd4.png)
 쉘에서 스크립트나 함수가 파라미터를 받을 땐 $@ (모든 옵션) 또는 $1, $2,,(첫 번째 입력 값, 두 번째 입력 값) 등을 기본 방식으로 저장된다.
 
-
  ls 명령어에서 사용되는 -a 또는 -all 등을 명령 행 옵션이라고 함
 ![옵션 기본 값](https://user-images.githubusercontent.com/43934522/142739539-71699add-4e08-4150-8ad8-cc14260248b3.png)
 ![예시](https://user-images.githubusercontent.com/43934522/142739547-a6147a34-f81f-4cbf-b852-812710485754.png)
+
+|옵션의 종류|예시|처리가능한 명령어|
+|:---:|:---:|:---:|
+|short|`command -a or -adc`|getopt, getopts|
+|long|`command --apple`|getopt|
+
 
 옵션은 short옵션과 long옵션이 있는데, getopts는 short옵션을, getopt는 long옵션을 처리한다
 short 옵션의 특징
