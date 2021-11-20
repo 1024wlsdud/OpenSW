@@ -163,10 +163,41 @@ sed 명령어는 **원본을 건드리지 않고** 편집하기 때문에 원본
 |옵션|설명|
 |:---:|:---:|
 |-n|자동 출력 off|
-|-e|이 다음 command로 텍스트 파일 가공|    
+|-e|편집을 가능하게 함|    
 sed 명령의 기본 형태는 sed -n 으로 생각해야 함(-n을 붙여주지 않으면 매우 더럽기 때문)
 
+
+편집할 때 사용하는 명령어는 여러개가 있지만, 대표적으로 **출력, 삭제, 치환, 문자열 추가**가 있다.
+
+
 ##sed Command
-1. 특정 행 출력 - p  
+### 1. 특정 행 출력 - p  
+1-1. 전체 내용 출력
 `sed -n -e '1,$p' sed_test_file.txt`     
-`sed -n -e '/$/p' sed_test_file.txt`
+`sed -n -e '/$/p' sed_test_file.txt`      
+
+
+1-2. 첫번째 줄 출력
+`sed -n -e '1p' ./sed_test_file.txt`
+![image](https://user-images.githubusercontent.com/43934522/142744107-5f98d68c-b6cc-4ebe-b3eb-a722cda5ff98.png) 
+
+
+1-3. 범위 출력 (n부터 끝까지 print)
+`sed -n -e 'n,$p' sed_test_file.txt`
+** 파일 속 내용을 일괄 변경하고 싶을 때 사용 **
+`sed -i 's/기존 내용/변경할 내용/g' *.php`
+
+1-4. 다중 command 사용 // 여러 command를 사용하려면 -e를 한번 더 사용하면 가능
+`sed -n -e '1p' -e '8,$p'  sed_test_file.txt`
+
+
+1-5. 특정 문자열이 있는 줄 출력
+`/포함된 문자열/p`     
+ex) `sed -n -e '/F/p'  sed_test_file.txt`
+
+### 2. 특정 행 삭제 - d
+행삭제 명령어는 **d**를 사용하면 됨
+`sed -n -e 'n,nd' -e '1,$p'  sed_test.txt`    
+![image](https://user-images.githubusercontent.com/43934522/142744195-339b5305-4983-421d-989e-1151fce46408.png)    
+### 3. 단어 치환 - s
+`### 2. 특정 행 삭제 - d`
