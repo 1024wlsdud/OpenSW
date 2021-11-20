@@ -123,7 +123,7 @@ getopt: option requires an argument -- 'a'
 $ ./test.sh --name
 getopt: option '--name' requires an argument
 ```
-getopt 명령의 특징
+getopt 특징 ex)
 1.	옵션들을 case문에서 깔끔하게 정렬해줌 
 2.	내부에서 자체적으로 옵션을 나누기 때문에 getopts가 못하는 부분을 해결함(short, long)
 
