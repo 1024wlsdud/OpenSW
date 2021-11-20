@@ -140,4 +140,18 @@ getopt 특징 ex)
 1.	옵션들을 case문에서 깔끔하게 정렬해줌 
 2.	내부에서 자체적으로 옵션을 나누기 때문에 getopts가 못하는 부분을 해결함(short, long)
 
+---
+<br/></br>
+# 리눅스 sed & awk 명령어 
+sed: Stream Editor, 원본 텍스트 파일을 편집하는 명령어   
+vi 편집기와 다르게, 실시간 저장하는 편집이 불가능
 
+
+sed 명령어는 **원본을 건드리지 않고** 편집하기 때문에 원본에 전혀 영향이 없다. (옵션을 지정해주면 원본 변경 가능)
+
+내부적으로 특수한 저장 공간인 **패턴 버퍼**와 **홀드 버퍼**를 사용한다.
+
+![image](https://user-images.githubusercontent.com/43934522/142743520-cc5f9533-7b11-48e4-8af8-8bda7ed9d2b6.png)
+*출처*
++	sed는 inputStream으로 파일의 내용을 가져옴
++	
