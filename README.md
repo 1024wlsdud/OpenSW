@@ -59,9 +59,22 @@ OPTIND: 다음 번 처리될 옵션의 인덱스, getopt()함수는 한 번 호�
  ![image](https://user-images.githubusercontent.com/43934522/142739589-15d85ac1-2772-4dcc-9dba-985020b90658.png "수동으로 처리하는 모습")
 
 
+```shell
+#!bin/bash
 
- ![image](https://user-images.githubusercontent.com/43934522/142739593-69735ac8-da82-481a-9c3d-d869ea4f314b.png)
-
+while getopts "a:bc" opt; do
+	case $opt in
+	a)
+		echo >&2 "-a was triggered!, OPTARG: $OPTARG"
+		;;
+	b)
+		echo >&2 "-b was triggered!, OPTARG: $OPTARG"
+		;;
+	c)
+		echo >&2 "-c was triggered!, OPTARG: $OPTARG"
+		;;
+	esac
+```
 위에 보이는 case안의 a), b) c)는 각각 옵션을 뜻하고 a는 argument를 요구한다는 의미이다.
 입맛대로 옵션 설정을 할 수 있기 때문에 코드를 더욱 간편하게 만들 수 있다.
 
