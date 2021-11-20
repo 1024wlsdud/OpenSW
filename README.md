@@ -12,6 +12,8 @@ getop와 getopts는 어디에 사용될까? -> 사용자나 개발자가 편의�
 쉘에서 스크립트나 함수가 파라미터를 받을 땐 $@ (모든 옵션) 또는 $1, $2,,(첫 번째 입력 값, 두 번째 입력 값) 등을 기본 방식으로 저장된다.
 
  ls 명령어에서 사용되는 -a 또는 -all 등을 명령 행 옵션이라고 함
+ 
+ 
 ![옵션 기본 값](https://user-images.githubusercontent.com/43934522/142739539-71699add-4e08-4150-8ad8-cc14260248b3.png)
 ![예시](https://user-images.githubusercontent.com/43934522/142739547-a6147a34-f81f-4cbf-b852-812710485754.png)
 
