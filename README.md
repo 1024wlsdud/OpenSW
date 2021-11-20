@@ -36,7 +36,7 @@ OPTIND: 다음 번 처리될 옵션의 인덱스, getopt()함수는 한 번 호�
 
 ![image](https://user-images.githubusercontent.com/43934522/142739578-7b99dbb0-5e3a-4ee4-a777-6eb83079c3cb.png)
 
- 
+ ***
 옵션은 옵션 인수를 가질 수 있는데, 이 때 옵션 스트링에서 해당 옵션 문자 뒤에 ‘:’를 붙이고, getopts명령은 옵션인수 값을 OPTARG 변수에 설정한다
 하지만, 옵션이 처리되지 않으면 계속 그 위치에 있기 때문에 수동으로 위치를 옮겨주거나, while문과 case문을 이용한다.
 
@@ -50,4 +50,24 @@ OPTIND: 다음 번 처리될 옵션의 인덱스, getopt()함수는 한 번 호�
 위에 보이는 case안의 a), b) c)는 각각 옵션을 뜻하고 a는 argument를 요구한다는 의미이다.
 입맛대로 옵션 설정을 할 수 있기 때문에 코드를 더욱 간편하게 만들 수 있다.
 
+getopts 명령은 error  repotting과 관련해, 구 개의 모드를 제공한다.
+  
+default값은 verbose모드, 기본적으로 옵션과 관련된 오류 메시지가 표시되므로 스크립트를 배포할 때는 silent mode를 이용한다.
+silent mode는 옵션 스트링의 맨 앞부분에 ‘:’ 문자를 추가
+
+$set -a aaa –posix –ling 123 -…
+short옵션은 a -abcd 이런 명령이 있다면, 붙여쓰기한 옵션 명으로 인식함
+또한 –long 옵션과 같이 인수를 사용하게 되면, 그 이후의 옵션은 getopts에 의해 인식이 되지 않음
+따라서 long옵션을 따로 처리하고 나머지를 처리해주는 과정이 필요함
+	long옵션을 삭제하고 short 옵션만 getopts 명령에 전달
+
+getopt는 /usr/bin/getopt에 위치한 외부 명령 (getopts 명령은 쉘 내장 명령)
+기본적으로 shor, long 옵션을 모두 지원함, 옵션 인수를 가질 경우 : 문자를 사용하는 것은 getopts 명령과 동일함
+short 옵션 지정: getopt -o a:bc 
+long 옵션 지정 getopt -l help,path:  (,로 옵션명을 구분) 
+차이점  설정하지 않은 옵션이 사용되거나 옵션 인수가 빠질 경우 오류 메시지를 출력해줌 
+‘ 
+getopt 명령의 특징
+1.	옵션들을 case문에서 깔끔하게 정렬해줌 
+2.	내부에서 자체적으로 옵션을 나누기 때문에 getopts가 못하는 부분을 해결함(short, long)
 
