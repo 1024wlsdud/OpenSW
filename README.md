@@ -38,9 +38,10 @@ OPTIND: 다음 번 처리될 옵션의 인덱스, getopt()함수는 한 번 호�
 옵션은 옵션 인수를 가질 수 있는데, 이 때 옵션 스트링에서 해당 옵션 문자 뒤에 ‘:’를 붙이고, getopts명령은 옵션인수 값을 OPTARG 변수에 설정한다
 하지만, 옵션이 처리되지 않으면 계속 그 위치에 있기 때문에
 수동으로 위치를 옮겨주거나, while문과 case문을 이용한다.
- ![image](https://user-images.githubusercontent.com/43934522/142739589-15d85ac1-2772-4dcc-9dba-985020b90658.png)
+ ![image](https://user-images.githubusercontent.com/43934522/142739589-15d85ac1-2772-4dcc-9dba-985020b90658.png "수동으로 처리하는 모습")
 
-수동으로 처리한 모습
+
+
  ![image](https://user-images.githubusercontent.com/43934522/142739593-69735ac8-da82-481a-9c3d-d869ea4f314b.png)
 
 위에 보이는 case안의 a), b) c)는 각각 옵션을 뜻하고 a는 argument를 요구한다는 의미이다.
