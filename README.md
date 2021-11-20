@@ -104,6 +104,8 @@ short옵션은 a -abcd 이런 명령이 있다면, 붙여쓰기한 옵션 명으
 따라서 long옵션을 따로 처리하고 나머지를 처리해주는 과정이 필요함
 +	long옵션을 삭제하고 short 옵션만 getopts 명령에 전달
 
+
+## long 옵션을 처리하기 위한 getopt사용 
 ***getopt는 /usr/bin/getopt에 위치한 외부 명령 (getopts 명령은 쉘 내장 명령)***
 
 기본적으로 shor, long 옵션을 모두 지원함, 옵션 인수를 가질 경우 : 문자를 사용하는 것은 getopts 명령과 동일함
@@ -137,4 +139,5 @@ getopt: option '--name' requires an argument
 getopt 특징 ex)
 1.	옵션들을 case문에서 깔끔하게 정렬해줌 
 2.	내부에서 자체적으로 옵션을 나누기 때문에 getopts가 못하는 부분을 해결함(short, long)
+
 
