@@ -5,6 +5,7 @@
 getop와 getopts는 어디에 사용될까? -> 사용자나 개발자가 편의를 위해 옵션을 생성하거나 추가할 때 사용
 **getopts**명령을 이용하지 않고 옵션을 해석해 처리하면, 옵션 처리에 스크립트가 많이 복잡해질 수 있음
 
+
 ![쉘 옵션](https://user-images.githubusercontent.com/43934522/142739531-d9073ba1-0317-4e5b-8029-b5ac481fcbd4.png)
 
 
