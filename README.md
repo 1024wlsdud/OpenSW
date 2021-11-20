@@ -2,11 +2,11 @@
 
 ### getopt & getopts
 
-getop와 getopts는 어디에 사용될까?
+getop와 getopts는 어디에 사용될까? -> 사용자나 개발자가 편의를 위해 옵션을 생성하거나 추가할 때 사용
 
+![쉘 옵션](https://user-images.githubusercontent.com/43934522/142739531-d9073ba1-0317-4e5b-8029-b5ac481fcbd4.png)
 쉘에서 스크립트나 함수가 파라미터를 받을 땐 $@ (모든 옵션) 또는 $1, $2,,(첫 번째 입력 값, 두 번째 입력 값) 등을 기본 방식으로 저장된다.
 
-  ![쉘 옵션](https://user-images.githubusercontent.com/43934522/142739531-d9073ba1-0317-4e5b-8029-b5ac481fcbd4.png)
 
  ls 명령어에서 사용되는 -a 또는 -all 등을 명령 행 옵션이라고 함
 ![옵션 기본 값](https://user-images.githubusercontent.com/43934522/142739539-71699add-4e08-4150-8ad8-cc14260248b3.png)
@@ -47,7 +47,12 @@ OPTIND: 다음 번 처리될 옵션의 인덱스, getopt()함수는 한 번 호�
 입맛대로 옵션 설정을 할 수 있기 때문에 코드를 더욱 간편하게 만들 수 있다.
 
 getopts 명령은 error  repotting과 관련해, 구 개의 모드를 제공한다.
-  
+ |Verbose Mode| | 
+ |:---|:---:|
+ |invalid 옵션 사용|opt 값을 `?`문자로 설정하고 OPTARG같은 unset 오류 메시지를 출력.|
+ |옵션인수 값을 제공하지 않음|opt값을 `?` 문자로 설정하고 OPTARG같은 unset. 오류 메시지를 출력.|
+ 
+ 
 default값은 verbose모드, 기본적으로 옵션과 관련된 오류 메시지가 표시되므로 스크립트를 배포할 때는 silent mode를 이용한다.
 silent mode는 옵션 스트링의 맨 앞부분에 ‘:’ 문자를 추가
 
