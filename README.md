@@ -14,7 +14,7 @@ getop와 getopts는 어디에 사용될까? -> 사용자나 개발자가 편의�
 
 |옵션의 종류|예시|처리가능한 명령어|
 |:---:|:---:|:---:|
-|short|`command -a or -adc`|getopt, getopts|
+|short|`command -a` or `-adc`|getopt, getopts|
 |long|`command --apple`|getopt|
 
 
