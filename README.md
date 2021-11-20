@@ -19,12 +19,15 @@ getop와 getopts는 어디에 사용될까? -> 사용자나 개발자가 편의�
 |short|`command -a` or `-adc`|getopt, getopts|
 |long|`command --apple`|getopt|
 
+---
+##각 옵션의 특징
 
-옵션은 short옵션과 long옵션이 있는데, getopts는 short옵션을, getopt는 long옵션을 처리한다
-short 옵션의 특징
-+옵션을 붙여서 사용할 수 있으며, 순서가 바뀌어도 된다
---	대표적인 명령어 ex) ls 명령어
-long 옵션의 특징
+**short 옵션의 특징**
++옵션을 붙여서 사용할 수 있다.
++옵션의 순서에 상관 없다.
++옵션에 인자를 가질 수 있다.
+
+**long 옵션의 특징**
 +	--command 형태로 사용됨 
 +	short옵션과 달리 붙여 쓸 수 없어 사용방법이 간단함
 	
