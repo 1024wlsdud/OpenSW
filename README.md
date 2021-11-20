@@ -152,6 +152,21 @@ sed 명령어는 **원본을 건드리지 않고** 편집하기 때문에 원본
 내부적으로 특수한 저장 공간인 **패턴 버퍼**와 **홀드 버퍼**를 사용한다.
 
 ![image](https://user-images.githubusercontent.com/43934522/142743520-cc5f9533-7b11-48e4-8af8-8bda7ed9d2b6.png)
-*출처*
+[출처](https://reakwon.tistory.com/164)
 +	sed는 inputStream으로 파일의 내용을 가져옴
-+	
++패턴버퍼에 내용을 담고, 데이터의 변형과 추가를 위해 임시 버퍼를 사용하는데, 이걸 **홀드 버퍼**라고 한다.
++작업이 끝난 후, 버퍼에 담긴 내용을 **OutStream**으로 보내주게 되면 콘솔창에 output으로 나타남 
+
+
+기본적인 sed 사용 형태
+`sed -n -e 'command' [input file]`
+|옵션|설명|
+|:---:|:---:|
+|-n|자동 출력 off|
+|-e|이 다음 command로 텍스트 파일 가공|    
+sed 명령의 기본 형태는 sed -n 으로 생각해야 함(-n을 붙여주지 않으면 매우 더럽기 때문)
+
+##sed Command
+1. 특정 행 출력 - p  
+`sed -n -e '1,$p' sed_test_file.txt`     
+`sed -n -e '/$/p' sed_test_file.txt`
