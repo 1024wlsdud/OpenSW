@@ -95,13 +95,16 @@ silent mode는 옵션 스트링의 맨 앞부분에 ‘:’ 문자를 추가
 
 `$set -a aaa –posix –ling 123 -…`
 short옵션은 a -abcd 이런 명령이 있다면, 붙여쓰기한 옵션 명으로 인식함
-또한 –long 옵션과 같이 인수를 사용하게 되면, 그 이후의 옵션은 getopts에 의해 인식이 되지 않음
-따라서 long옵션을 따로 처리하고 나머지를 처리해주는 과정이 필요함
-	long옵션을 삭제하고 short 옵션만 getopts 명령에 전달
+또한 –long 옵션과 같이 인수를 사용하게 되면, 그 이후의 옵션은 getopts에 의해 인식이 되지 않게 됨    
 
-getopt는 /usr/bin/getopt에 위치한 외부 명령 (getopts 명령은 쉘 내장 명령)
+
+따라서 long옵션을 따로 처리하고 나머지를 처리해주는 과정이 필요함
++	long옵션을 삭제하고 short 옵션만 getopts 명령에 전달
+
+***getopt는 /usr/bin/getopt에 위치한 외부 명령 (getopts 명령은 쉘 내장 명령)***
+
 기본적으로 shor, long 옵션을 모두 지원함, 옵션 인수를 가질 경우 : 문자를 사용하는 것은 getopts 명령과 동일함
-|옵션 지정||
+|옵션 지정|명령어|
 |:---:|:---:|
 |short 옵션 지정|`getopt -o a:bc` |
 |long 옵션 지정|`getopt -l help,path:`|
