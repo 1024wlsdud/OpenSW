@@ -200,4 +200,13 @@ ex) `sed -n -e '/F/p'  sed_test_file.txt`
 `sed -n -e 'n,nd' -e '1,$p'  sed_test.txt`    
 ![image](https://user-images.githubusercontent.com/43934522/142744195-339b5305-4983-421d-989e-1151fce46408.png)    
 ### 3. 단어 치환 - s
-`### 2. 특정 행 삭제 - d`
+3.1 기본적인 단어 치환
+`s/old/new/g`
+`s/old/new/gi`
+old는 단어를 치환할 문자열, new는 새롭게 치환한 문자열 **비어있으면 그 문자열을 삭제한 효과**
+
++부가옵션 i(ignore case)로 단어를 검색할 때 대소문자 구분 x 
+
+3-2 특정 단어로 시작, 끝나는 단어를 포함하는 라인의 문자열 치환
++ 앞에 '^'문자를 사용
++ 특정단어로 시작하거나 끝나는 문자열이 아닌, 줄임 
