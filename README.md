@@ -104,7 +104,25 @@ getopt는 /usr/bin/getopt에 위치한 외부 명령 (getopts 명령은 쉘 내�
 short 옵션 지정: getopt -o a:bc 
 long 옵션 지정 getopt -l help,path:  (,로 옵션명을 구분) 
 차이점  설정하지 않은 옵션이 사용되거나 옵션 인수가 빠질 경우 오류 메시지를 출력해줌 
-‘ 
+```shell
+#!/bin/bash
+
+options=$( getopt -o a:bc -l help,path:,name: -- "$@" )
+echo "$options"
+-----------------------------------------------------
+
+$ ./test.sh -x
+getopt: invalid option -- 'x'
+
+$ ./test.sh --xxx
+getopt: unrecognized option '--xxx'
+
+$ ./test.sh -a
+getopt: option requires an argument -- 'a'
+
+$ ./test.sh --name
+getopt: option '--name' requires an argument
+```
 getopt 명령의 특징
 1.	옵션들을 case문에서 깔끔하게 정렬해줌 
 2.	내부에서 자체적으로 옵션을 나누기 때문에 getopts가 못하는 부분을 해결함(short, long)
