@@ -78,7 +78,10 @@ while getopts "a:bc" opt; do
 위에 보이는 case안의 a), b) c)는 각각 옵션을 뜻하고 a는 argument를 요구한다는 의미이다.
 입맛대로 옵션 설정을 할 수 있기 때문에 코드를 더욱 간편하게 만들 수 있다.
 
-getopts 명령은 error  repotting과 관련해, 두 개의 모드를 제공한다.
+
+**옵션에 없는 값을 넣게 된다면 어떻게 될까?**
+
+getopts 명령은 **error  repotting**과 관련해, 두 개의 모드를 제공한다.
  |Verbose Mode| | 
  |:---|:---:|
  |invalid 옵션 사용|opt 값을 `?`문자로 설정하고 OPTARG같은 unset 오류 메시지를 출력.|
@@ -101,6 +104,8 @@ short옵션은 a -abcd 이런 명령이 있다면, 붙여쓰기한 옵션 명으
 따라서 long옵션을 따로 처리하고 나머지를 처리해주는 과정이 필요함
 +	long옵션을 삭제하고 short 옵션만 getopts 명령에 전달
 
+
+## long 옵션을 처리하기 위한 getopt사용 
 ***getopt는 /usr/bin/getopt에 위치한 외부 명령 (getopts 명령은 쉘 내장 명령)***
 
 기본적으로 shor, long 옵션을 모두 지원함, 옵션 인수를 가질 경우 : 문자를 사용하는 것은 getopts 명령과 동일함
@@ -135,3 +140,73 @@ getopt 특징 ex)
 1.	옵션들을 case문에서 깔끔하게 정렬해줌 
 2.	내부에서 자체적으로 옵션을 나누기 때문에 getopts가 못하는 부분을 해결함(short, long)
 
+---
+<br/></br>
+# 리눅스 sed & awk 명령어 
+sed: Stream Editor, 원본 텍스트 파일을 편집하는 명령어   
+vi 편집기와 다르게, 실시간 저장하는 편집이 불가능
+
+
+sed 명령어는 **원본을 건드리지 않고** 편집하기 때문에 원본에 전혀 영향이 없다. (옵션을 지정해주면 원본 변경 가능)
+
+내부적으로 특수한 저장 공간인 **패턴 버퍼**와 **홀드 버퍼**를 사용한다.
+
+![image](https://user-images.githubusercontent.com/43934522/142743520-cc5f9533-7b11-48e4-8af8-8bda7ed9d2b6.png)
+[출처](https://reakwon.tistory.com/164)
++	sed는 inputStream으로 파일의 내용을 가져옴
++패턴버퍼에 내용을 담고, 데이터의 변형과 추가를 위해 임시 버퍼를 사용하는데, 이걸 **홀드 버퍼**라고 한다.
++작업이 끝난 후, 버퍼에 담긴 내용을 **OutStream**으로 보내주게 되면 콘솔창에 output으로 나타남 
+
+
+기본적인 sed 사용 형태
+`sed -n -e 'command' [input file]`
+|옵션|설명|
+|:---:|:---:|
+|-n|자동 출력 off|
+|-e|편집을 가능하게 함|    
+sed 명령의 기본 형태는 sed -n 으로 생각해야 함(-n을 붙여주지 않으면 매우 더럽기 때문)
+
+
+편집할 때 사용하는 명령어는 여러개가 있지만, 대표적으로 **출력, 삭제, 치환, 문자열 추가**가 있다.
+
+
+##sed Command
+### 1. 특정 행 출력 - p  
+1-1. 전체 내용 출력
+`sed -n -e '1,$p' sed_test_file.txt`     
+`sed -n -e '/$/p' sed_test_file.txt`      
+
+
+1-2. 첫번째 줄 출력
+`sed -n -e '1p' ./sed_test_file.txt`
+![image](https://user-images.githubusercontent.com/43934522/142744107-5f98d68c-b6cc-4ebe-b3eb-a722cda5ff98.png) 
+
+
+1-3. 범위 출력 (n부터 끝까지 print)
+`sed -n -e 'n,$p' sed_test_file.txt`
+** 파일 속 내용을 일괄 변경하고 싶을 때 사용 **
+`sed -i 's/기존 내용/변경할 내용/g' *.php`
+
+1-4. 다중 command 사용 // 여러 command를 사용하려면 -e를 한번 더 사용하면 가능
+`sed -n -e '1p' -e '8,$p'  sed_test_file.txt`
+
+
+1-5. 특정 문자열이 있는 줄 출력
+`/포함된 문자열/p`     
+ex) `sed -n -e '/F/p'  sed_test_file.txt`
+
+### 2. 특정 행 삭제 - d
+행삭제 명령어는 **d**를 사용하면 됨
+`sed -n -e 'n,nd' -e '1,$p'  sed_test.txt`    
+![image](https://user-images.githubusercontent.com/43934522/142744195-339b5305-4983-421d-989e-1151fce46408.png)    
+### 3. 단어 치환 - s
+3.1 기본적인 단어 치환
+`s/old/new/g`
+`s/old/new/gi`
+old는 단어를 치환할 문자열, new는 새롭게 치환한 문자열 **비어있으면 그 문자열을 삭제한 효과**
+
++부가옵션 i(ignore case)로 단어를 검색할 때 대소문자 구분 x 
+
+3-2 특정 단어로 시작, 끝나는 단어를 포함하는 라인의 문자열 치환
++ 앞에 '^'문자를 사용
++ 특정단어로 시작하거나 끝나는 문자열이 아닌, 줄임 
