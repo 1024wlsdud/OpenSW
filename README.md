@@ -275,7 +275,9 @@ awk명령으로 할 수 있는 일
 ### awk 기본 구조
 **`    awk [OPTION...] 'pattern { action }' [ARGUMENT...]`**
 pattern과 action은 모두 생략이 가능, pattern을 생략할 시 모든 레코드가 적용,   
-action을 생략하면 print가 적용 
+action을 생략하면 print가 적용    
+
+
 `awk 'pattern' filename`   
 `awk '{action}' filename`   
 `awk 'pattern {action}' filename`    
@@ -311,9 +313,31 @@ $ awk '{print $1}' awkfile
 + 레코드  
     + awk는 입력 데이터를 볼 수 없지만 포맷 또는 구조를 볼 순 있음. 레코드라고 불리는 각 라인은 newline으로 분리
     + NR 변수: 각 레코드 번호는 awk의 빌트인 변수 NR에 저장된다.
++ 필드
+    + 각 레코드는 디폴트로 공백이나 탭으로 분리된 필드라는 워드로 구성, NF에 필드의 수를 유지하며 라인당 100개의 필드를 가짐
+
 **옵션**
+### 출력 print
++ awk 필드값 출력 예시
++ ![image](https://user-images.githubusercontent.com/43934522/142753849-32c338db-c8ce-459f-8776-8abd4026aa16.png)
++ `awk '{print "no:"$1, "user:"$2}' ./file.txt` 로 문자열을 같이 출력할 수 있음 
++ ![image](https://user-images.githubusercontent.com/43934522/142753903-9f7114ce-9111-4aa3-be53-08a1e39340c3.png)
++ `awk '$3 > 70 { print $0 }' ./file.txt` 
++ 특정 필드 값 비교를 통해 세 번째 필드가 70보다 큰 레코드를 출력한다. 
++ 이 이외에도 합, 평균값 등 연산을 구해서 출력할 수 있고, 레코드의 길이도 검사할 수 있다. 
 ### 필드 구분 문자 지정 -F
+`awk -F ':' '{ print $1 }' ./file.txt         # 필드 구분 문자를 : 로 변경.`
+`awk -F ',' '{ print $1 }' ./file.txt         # 필드 구분 문자를 , 로 변경.`
 ### awk 프로그램 파일 경로 지정 -f
 + awk액션과 명령이 파일에 작성되어 있을 때 -f 사용
 + `awk -f [awk 명령파일] [awk 명령을 적용할 텍스트 파일]`
-### awk 프로그램에서 사용될 특정 variabler값 지정 -v
++ `awk -f awkp.script ./file.txt           # awkp.script에 저장된 awk program 실행`
+### 특정 레코드만 출력하기.
++ exit 키워드를 사용해 awk 실행을 중지시킬 수 있다.
++ ![image](https://user-images.githubusercontent.com/43934522/142754775-fc19a1bb-6fa1-496c-8542-0ea61a6519a1.png)
+
+이 외에도 필드 중 최대값, 출력 피드 너비 지정 등 출력에 관련된 옵션들이 있다.
+
++ awk 표현식은 C언어 표현식과 유사한 형태로 제공되어 새로운 변수를 선언이 가능
++ 값을 할당하거나 참조할 수 있다
++ c언어처럼 함수를 사용할 수 있고, 변수를 참조할 수 있다. 
