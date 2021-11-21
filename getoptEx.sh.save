@@ -1,0 +1,4 @@
+#!bin/bash
+
+# ::::::::::::TEST:::::::::::: #
+while getopts "ahd" opt; do case $opt in
