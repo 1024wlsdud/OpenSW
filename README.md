@@ -277,8 +277,7 @@ awk명령으로 할 수 있는 일
 `awk '{action}' filename`   
 `awk 'pattern {action}' filename`    
 + ***EX)*** 
-+ 
-+ ```
+```
 $ awk '{print $0}' awkfile
 >
 홍 길동 3324    5/11/96 50354  
@@ -287,7 +286,8 @@ $ awk '{print $0}' awkfile
 정 약용 8683    9/40/48 365000 
 ```
 
-+ ```sehll$ awk '{print $1}' awkfile
+ ```sehll
+$ awk '{print $1}' awkfile
 > 
 홍
 임
