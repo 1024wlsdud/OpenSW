@@ -230,4 +230,10 @@ old는 단어를 치환할 문자열, new는 새롭게 치환한 문자열 **비
 
 ***EX)*** `sed -n -e '/Jinyeong/a\Smart' -e '1,$p' 파일명.txt`
 + Jinyeong으로 끝나는 줄 다음에 Smart라는 줄을 넣음 
-+
++ ![image](https://user-images.githubusercontent.com/43934522/142752749-68a39101-58bd-4953-98eb-050af090f1e2.png "코드 실행 사진")
+
+
++ 하지만, 원본 파일의 내용은 변하지 않은걸 확인할 수 있다.
++ ![image](https://user-images.githubusercontent.com/43934522/142752781-e31c287d-7464-48c7-832a-d43b6f1aff96.png)
+
+
